@@ -7,4 +7,10 @@ class User < ApplicationRecord
     end
   end
 
+  def games_picked
+    self.picks.map do |pick|
+      pick.game_id
+    end
+  end
+
 end
