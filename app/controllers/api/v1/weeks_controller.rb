@@ -16,6 +16,11 @@ class Api::V1::WeeksController < ApplicationController
    end
  end
 
+ def show
+   @week = Week.find(params[:id])
+   render json: @week
+ end
+
  private
  def week_params
    params.permit(:name)
