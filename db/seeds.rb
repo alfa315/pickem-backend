@@ -13,3 +13,7 @@ giants = Team.create(name: 'New York Giants')
 al = User.create(name: 'Al', wins: 0, losses: 0)
 
 will = User.create(name: 'Will', wins: 0, losses: 0)
+
+week1 = Week.create(week_number: 1)
+
+g1 = Game.create(home_team: falcons, away_team: giants, winning_team_id: 1, week_id: 1)
