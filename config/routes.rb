@@ -6,8 +6,8 @@ Rails.application.routes.draw do
         resources :picks
       end
       resources :games, only: [:index, :update, :create, :show]
-      resources :picks, only: [:index, :update, :create, :show]
       resources :weeks, only: [:index, :update, :create, :show]
     end
   end
+  get '/api/v1/users/:id/picks/week/:week_number', to: 'api/v1/users#show_week'
 end

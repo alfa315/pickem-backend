@@ -105,7 +105,10 @@ w7.new_game(dolphins, bills)
 
 w8 = Week.create(week_number: 8)
 
-w8.new_game(chiefs, chargers)
+w8.new_game(chargers, patriots)
+w8.new_game(dolphins, ravens)
+w8.new_game(vikings, browns)
+w8.new_game(falcons, jets)
 
 w9 = Week.create(week_number: 9)
 

@@ -24,6 +24,12 @@ module Api
        render json: @user
      end
 
+     def show_week
+       @user = User.find(params[:id])
+      #  byebug
+       render json: @user.week_picks(params[:week_number].to_i)
+     end
+
      private
      def user_params
        params.permit(:name, :wins, :losses)
