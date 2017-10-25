@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   def week_picks(num)
     self.picks.select do |pick|
-      pick.game.week_id == num
+      pick.week.week_number == num
     end
   end
 
