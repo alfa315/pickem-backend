@@ -12400,3 +12400,1380 @@ Processing by Api::V1::PicksController#create as */*
 Completed 200 OK in 36ms (Views: 3.4ms | ActiveRecord: 12.1ms)
 
 
+Started GET "/api/v1/users/1/picks/" for 127.0.0.1 at 2017-10-25 15:46:02 -0400
+Started GET "/api/v1/weeks/8" for 127.0.0.1 at 2017-10-25 15:46:02 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PicksController#index as */*
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"user_id"=>"1"}
+  Parameters: {"id"=>"8"}
+  [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+  [1m[36mWeek Load (1.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (22.59ms)
+Completed 200 OK in 55ms (Views: 33.3ms | ActiveRecord: 14.8ms)
+
+
+[active_model_serializers]   [1m[36mGame Load (2.0ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (41.15ms)
+Completed 200 OK in 85ms (Views: 44.5ms | ActiveRecord: 27.8ms)
+
+
+Started POST "/api/v1/users/1/picks/" for 127.0.0.1 at 2017-10-25 15:46:17 -0400
+Processing by Api::V1::PicksController#create as */*
+  Parameters: {"_json"=>[{"gameId"=>11, "guessId"=>1, "weekNumber"=>8, "userId"=>1}, {"gameId"=>10, "guessId"=>10, "weekNumber"=>8, "userId"=>1}, {"gameId"=>9, "guessId"=>30, "weekNumber"=>8, "userId"=>1}, {"gameId"=>8, "guessId"=>21, "weekNumber"=>8, "userId"=>1}], "user_id"=>"1", "pick"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 11], ["user_id", 1], ["guess_id", 1], ["created_at", "2017-10-25 19:46:17.245506"], ["updated_at", "2017-10-25 19:46:17.245506"], ["week_id", 8]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 10], ["user_id", 1], ["guess_id", 10], ["created_at", "2017-10-25 19:46:17.251623"], ["updated_at", "2017-10-25 19:46:17.251623"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 9], ["user_id", 1], ["guess_id", 30], ["created_at", "2017-10-25 19:46:17.255974"], ["updated_at", "2017-10-25 19:46:17.255974"], ["week_id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 8], ["user_id", 1], ["guess_id", 21], ["created_at", "2017-10-25 19:46:17.260496"], ["updated_at", "2017-10-25 19:46:17.260496"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (1.27ms)
+Completed 200 OK in 73ms (Views: 1.8ms | ActiveRecord: 33.7ms)
+
+
+Started POST "/api/v1/users/1/picks/" for 127.0.0.1 at 2017-10-25 15:46:18 -0400
+Processing by Api::V1::PicksController#create as */*
+  Parameters: {"_json"=>[{"gameId"=>11, "guessId"=>1, "weekNumber"=>8, "userId"=>1}, {"gameId"=>10, "guessId"=>10, "weekNumber"=>8, "userId"=>1}, {"gameId"=>9, "guessId"=>30, "weekNumber"=>8, "userId"=>1}, {"gameId"=>8, "guessId"=>21, "weekNumber"=>8, "userId"=>1}], "user_id"=>"1", "pick"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.8ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (1.41ms)
+Completed 200 OK in 39ms (Views: 1.9ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/api/v1/weeks/9" for 127.0.0.1 at 2017-10-25 15:46:20 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mWeek Load (0.8ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (8.29ms)
+Completed 200 OK in 12ms (Views: 7.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/weeks/8" for 127.0.0.1 at 2017-10-25 15:46:21 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (12.79ms)
+Completed 200 OK in 14ms (Views: 10.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/v1/weeks/9" for 127.0.0.1 at 2017-10-25 15:46:22 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mWeek Load (1.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.9ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (11.69ms)
+Completed 200 OK in 16ms (Views: 10.2ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/v1/weeks/10" for 127.0.0.1 at 2017-10-25 15:46:22 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mWeek Load (0.6ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (12.06ms)
+Completed 200 OK in 17ms (Views: 11.1ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/weeks/11" for 127.0.0.1 at 2017-10-25 15:46:23 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (1.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers]   [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (12.85ms)
+Completed 200 OK in 16ms (Views: 11.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/weeks/12" for 127.0.0.1 at 2017-10-25 15:46:23 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"12"}
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (11.41ms)
+Completed 200 OK in 14ms (Views: 10.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/weeks/13" for 127.0.0.1 at 2017-10-25 15:46:23 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"13"}
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 13]]
+[active_model_serializers]   [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 13]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (17.43ms)
+Completed 200 OK in 21ms (Views: 15.8ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/v1/weeks/14" for 127.0.0.1 at 2017-10-25 15:46:24 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"14"}
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 14]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 14]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.66ms)
+Completed 200 OK in 14ms (Views: 9.5ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/weeks/15" for 127.0.0.1 at 2017-10-25 15:46:24 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"15"}
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 15]]
+[active_model_serializers]   [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 15]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (13.32ms)
+Completed 200 OK in 17ms (Views: 11.7ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/weeks/16" for 127.0.0.1 at 2017-10-25 15:46:24 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 16]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 16]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (13.64ms)
+Completed 200 OK in 17ms (Views: 12.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/v1/weeks/17" for 127.0.0.1 at 2017-10-25 15:46:24 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mWeek Load (0.6ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 17]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 17]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.82ms)
+Completed 200 OK in 14ms (Views: 9.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/weeks/16" for 127.0.0.1 at 2017-10-25 15:46:25 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mWeek Load (0.7ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 16]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 16]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.64ms)
+Completed 200 OK in 15ms (Views: 9.5ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/v1/weeks/15" for 127.0.0.1 at 2017-10-25 15:46:25 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"15"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 15]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 15]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (9.75ms)
+Completed 200 OK in 13ms (Views: 8.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/weeks/14" for 127.0.0.1 at 2017-10-25 15:46:25 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"14"}
+  [1m[36mWeek Load (0.7ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 14]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 14]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.35ms)
+Completed 200 OK in 15ms (Views: 9.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/weeks/13" for 127.0.0.1 at 2017-10-25 15:46:26 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"13"}
+  [1m[36mWeek Load (0.6ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 13]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 13]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (13.06ms)
+Completed 200 OK in 16ms (Views: 11.5ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/v1/weeks/12" for 127.0.0.1 at 2017-10-25 15:46:26 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"12"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.8ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (9.29ms)
+Completed 200 OK in 12ms (Views: 8.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/weeks/11" for 127.0.0.1 at 2017-10-25 15:46:26 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.66ms)
+Completed 200 OK in 14ms (Views: 9.7ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/weeks/10" for 127.0.0.1 at 2017-10-25 15:46:26 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (11.61ms)
+Completed 200 OK in 15ms (Views: 10.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/weeks/9" for 127.0.0.1 at 2017-10-25 15:46:26 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (11.16ms)
+Completed 200 OK in 15ms (Views: 10.3ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/weeks/8" for 127.0.0.1 at 2017-10-25 15:46:26 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (26.33ms)
+Completed 200 OK in 30ms (Views: 23.1ms | ActiveRecord: 4.8ms)
+
+
+Started GET "/api/v1/weeks/7" for 127.0.0.1 at 2017-10-25 15:46:26 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 7]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 7]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (4.05ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/weeks/6" for 127.0.0.1 at 2017-10-25 15:46:27 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 6]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 6]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.25ms)
+Completed 200 OK in 13ms (Views: 9.4ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/weeks/5" for 127.0.0.1 at 2017-10-25 15:46:27 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 5]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 5]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.66ms)
+Completed 200 OK in 14ms (Views: 9.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/weeks/4" for 127.0.0.1 at 2017-10-25 15:46:27 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 4]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 4]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (11.93ms)
+Completed 200 OK in 15ms (Views: 10.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/weeks/3" for 127.0.0.1 at 2017-10-25 15:46:27 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mWeek Load (0.8ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 3]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 3]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (9.55ms)
+Completed 200 OK in 13ms (Views: 8.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/weeks/4" for 127.0.0.1 at 2017-10-25 15:46:28 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 4]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 4]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (4.43ms)
+Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/weeks/5" for 127.0.0.1 at 2017-10-25 15:46:28 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 5]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 5]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (11.93ms)
+Completed 200 OK in 15ms (Views: 10.6ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/weeks/6" for 127.0.0.1 at 2017-10-25 15:46:28 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 6]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 6]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (6.7ms)
+Completed 200 OK in 10ms (Views: 6.3ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/weeks/7" for 127.0.0.1 at 2017-10-25 15:46:29 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 7]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 7]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.33ms)
+Completed 200 OK in 13ms (Views: 9.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/weeks/8" for 127.0.0.1 at 2017-10-25 15:46:29 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (24.81ms)
+Completed 200 OK in 28ms (Views: 21.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/v1/weeks/9" for 127.0.0.1 at 2017-10-25 15:46:29 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (11.94ms)
+Completed 200 OK in 15ms (Views: 11.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/weeks/10" for 127.0.0.1 at 2017-10-25 15:46:29 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mWeek Load (0.6ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.72ms)
+Completed 200 OK in 14ms (Views: 9.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/weeks/11" for 127.0.0.1 at 2017-10-25 15:46:30 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (4.03ms)
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/v1/users/1/picks/" for 127.0.0.1 at 2017-10-25 15:46:33 -0400
+Processing by Api::V1::PicksController#create as */*
+  Parameters: {"_json"=>[{"gameId"=>14, "guessId"=>19, "weekNumber"=>11, "userId"=>1}], "user_id"=>"1", "pick"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 14], ["user_id", 1], ["guess_id", 19], ["created_at", "2017-10-25 19:46:33.428278"], ["updated_at", "2017-10-25 19:46:33.428278"], ["week_id", 11]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (0.45ms)
+Completed 200 OK in 14ms (Views: 0.8ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/api/v1/weeks/10" for 127.0.0.1 at 2017-10-25 15:46:34 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (7.04ms)
+Completed 200 OK in 9ms (Views: 6.3ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/api/v1/users/1/picks/" for 127.0.0.1 at 2017-10-25 15:46:37 -0400
+Processing by Api::V1::PicksController#create as */*
+  Parameters: {"_json"=>[{"gameId"=>13, "guessId"=>10, "weekNumber"=>10, "userId"=>1}], "user_id"=>"1", "pick"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mWeek Load (0.9ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 13], ["user_id", 1], ["guess_id", 10], ["created_at", "2017-10-25 19:46:37.229682"], ["updated_at", "2017-10-25 19:46:37.229682"], ["week_id", 10]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.6ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (1.15ms)
+Completed 200 OK in 37ms (Views: 2.3ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/api/v1/weeks/11" for 127.0.0.1 at 2017-10-25 15:46:38 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (5.29ms)
+Completed 200 OK in 7ms (Views: 4.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/weeks/12" for 127.0.0.1 at 2017-10-25 15:46:38 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"12"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.51ms)
+Completed 200 OK in 14ms (Views: 9.9ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/weeks/13" for 127.0.0.1 at 2017-10-25 15:46:43 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"13"}
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 13]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 13]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.18ms)
+Completed 200 OK in 14ms (Views: 9.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/v1/weeks/12" for 127.0.0.1 at 2017-10-25 15:46:45 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"12"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (6.66ms)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/weeks/11" for 127.0.0.1 at 2017-10-25 15:46:45 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (4.95ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/weeks/10" for 127.0.0.1 at 2017-10-25 15:46:45 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (5.53ms)
+Completed 200 OK in 8ms (Views: 5.4ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/weeks/9" for 127.0.0.1 at 2017-10-25 15:46:45 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (12.22ms)
+Completed 200 OK in 15ms (Views: 11.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/weeks/8" for 127.0.0.1 at 2017-10-25 15:46:45 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (17.66ms)
+Completed 200 OK in 20ms (Views: 15.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/v1/weeks/7" for 127.0.0.1 at 2017-10-25 15:46:45 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 7]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 7]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (12.48ms)
+Completed 200 OK in 15ms (Views: 11.4ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/weeks/6" for 127.0.0.1 at 2017-10-25 15:46:46 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 6]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.1ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 6]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (4.09ms)
+Completed 200 OK in 6ms (Views: 3.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/weeks/5" for 127.0.0.1 at 2017-10-25 15:46:46 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mWeek Load (0.8ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 5]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 5]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (9.63ms)
+Completed 200 OK in 14ms (Views: 9.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/weeks/4" for 127.0.0.1 at 2017-10-25 15:46:46 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 4]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 4]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (6.2ms)
+Completed 200 OK in 9ms (Views: 6.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/weeks/3" for 127.0.0.1 at 2017-10-25 15:46:46 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 3]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 3]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (12.59ms)
+Completed 200 OK in 15ms (Views: 11.1ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/v1/weeks/2" for 127.0.0.1 at 2017-10-25 15:46:46 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 2]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 2]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (12.37ms)
+Completed 200 OK in 15ms (Views: 11.3ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/v1/weeks/1" for 127.0.0.1 at 2017-10-25 15:46:46 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 1]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (11.16ms)
+Completed 200 OK in 14ms (Views: 10.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/weeks/2" for 127.0.0.1 at 2017-10-25 15:46:49 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"2"}
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 2]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 2]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (5.88ms)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/v1/weeks/3" for 127.0.0.1 at 2017-10-25 15:46:49 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"3"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 3]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 3]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (5.18ms)
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/weeks/4" for 127.0.0.1 at 2017-10-25 15:46:49 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"4"}
+  [1m[36mWeek Load (0.6ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 4]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 4]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.05ms)
+Completed 200 OK in 14ms (Views: 9.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/api/v1/weeks/5" for 127.0.0.1 at 2017-10-25 15:46:49 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"5"}
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 5]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.1ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 5]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (4.79ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/v1/weeks/6" for 127.0.0.1 at 2017-10-25 15:46:49 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"6"}
+  [1m[36mWeek Load (0.7ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 6]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 26], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 28], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 6]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (5.58ms)
+Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/api/v1/weeks/7" for 127.0.0.1 at 2017-10-25 15:46:50 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"7"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 7]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 7]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.58ms)
+Completed 200 OK in 14ms (Views: 9.8ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/weeks/8" for 127.0.0.1 at 2017-10-25 15:46:50 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"8"}
+  [1m[36mWeek Load (0.7ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (21.78ms)
+Completed 200 OK in 25ms (Views: 18.9ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/api/v1/weeks/9" for 127.0.0.1 at 2017-10-25 15:46:50 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"9"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers]   [1m[36mTeam Load (0.7ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 9]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (12.0ms)
+Completed 200 OK in 15ms (Views: 11.0ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/v1/weeks/10" for 127.0.0.1 at 2017-10-25 15:46:50 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"10"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.5ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (1.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 10]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (13.97ms)
+Completed 200 OK in 17ms (Views: 11.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/v1/weeks/11" for 127.0.0.1 at 2017-10-25 15:46:50 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"11"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 11]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (7.02ms)
+Completed 200 OK in 9ms (Views: 6.6ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/weeks/12" for 127.0.0.1 at 2017-10-25 15:46:50 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"12"}
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 12]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (10.23ms)
+Completed 200 OK in 13ms (Views: 9.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/api/v1/weeks/13" for 127.0.0.1 at 2017-10-25 15:46:51 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"13"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 13]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 13]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (6.56ms)
+Completed 200 OK in 9ms (Views: 6.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/v1/weeks/14" for 127.0.0.1 at 2017-10-25 15:46:51 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"14"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 14]]
+[active_model_serializers]   [1m[36mTeam Load (1.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 14]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (11.24ms)
+Completed 200 OK in 14ms (Views: 9.3ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/v1/weeks/15" for 127.0.0.1 at 2017-10-25 15:46:51 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"15"}
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.6ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 15]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 15]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (12.53ms)
+Completed 200 OK in 15ms (Views: 11.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/v1/weeks/16" for 127.0.0.1 at 2017-10-25 15:46:51 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"16"}
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 16]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 16]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (5.9ms)
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/weeks/17" for 127.0.0.1 at 2017-10-25 15:46:51 -0400
+Processing by Api::V1::WeeksController#show as */*
+  Parameters: {"id"=>"17"}
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 17]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 17]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (6.83ms)
+Completed 200 OK in 9ms (Views: 5.9ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/users/al" for 127.0.0.1 at 2017-10-25 15:54:38 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"al"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 12ms (ActiveRecord: 5.9ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=al):
+  
+app/controllers/api/v1/users_controller.rb:23:in `show'
+Started GET "/api/v1/users/Al" for 127.0.0.1 at 2017-10-25 15:55:54 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"Al"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 14ms (ActiveRecord: 4.9ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Al):
+  
+app/controllers/api/v1/users_controller.rb:23:in `show'
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 15:56:34 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (Al) LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 5.2ms)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column "al" does not exist
+LINE 1: SELECT  "users".* FROM "users" WHERE (Al) LIMIT $1
+                                              ^
+: SELECT  "users".* FROM "users" WHERE (Al) LIMIT $1):
+  
+app/controllers/api/v1/users_controller.rb:34:in `user_by_name'
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 15:57:00 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (Al) LIMIT $1[0m  [["LIMIT", 1]]
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column "al" does not exist
+LINE 1: SELECT  "users".* FROM "users" WHERE (Al) LIMIT $1
+                                              ^
+: SELECT  "users".* FROM "users" WHERE (Al) LIMIT $1):
+  
+app/controllers/api/v1/users_controller.rb:34:in `user_by_name'
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 15:57:46 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Al"], ["LIMIT", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (5.92ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 4.9ms)
+
+
+  
+NoMethodError (undefined method `losses' for #<User:0x007fd3aad75700>):
+  
+app/controllers/api/v1/users_controller.rb:35:in `user_by_name'
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 15:58:37 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Al"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (2.0ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (33.97ms)
+Completed 200 OK in 43ms (Views: 29.5ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/v1/users/Al" for 127.0.0.1 at 2017-10-25 15:58:51 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"Al"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 4ms (ActiveRecord: 0.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=Al):
+  
+app/controllers/api/v1/users_controller.rb:23:in `show'
+Started GET "/api/v1/usersby/Will" for 127.0.0.1 at 2017-10-25 15:59:45 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Will"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Will"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (4.7ms)
+Completed 200 OK in 16ms (Views: 5.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/usersby/will" for 127.0.0.1 at 2017-10-25 16:00:26 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"will"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "will"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.1ms)
+Completed 200 OK in 8ms (Views: 5.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/usersby/Will" for 127.0.0.1 at 2017-10-25 16:00:33 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Will"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Will"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (1.96ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 16:00:39 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Al"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (15.0ms)
+Completed 200 OK in 17ms (Views: 11.3ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 16:00:43 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Al"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (3.93ms)
+Completed 200 OK in 7ms (Views: 4.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/v1/usersby/will" for 127.0.0.1 at 2017-10-25 16:00:45 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"will"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "will"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.04ms)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/usersby/Will" for 127.0.0.1 at 2017-10-25 16:00:49 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Will"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Will"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (2.07ms)
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 16:01:00 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Al"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (3.1ms)
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/usersby/al" for 127.0.0.1 at 2017-10-25 16:01:15 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"al"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "al"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.05ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 16:01:59 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Al"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (14.77ms)
+Completed 200 OK in 25ms (Views: 16.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 16:03:27 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Al"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (17.69ms)
+Completed 200 OK in 29ms (Views: 19.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/usersby/al" for 127.0.0.1 at 2017-10-25 16:03:30 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"al"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "al"], ["LIMIT", 1]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "al"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.1ms)
+Completed 200 OK in 5ms (Views: 3.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/v1/usersby/al" for 127.0.0.1 at 2017-10-25 16:03:45 -0400
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"al"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "al"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "al"], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Class (0.13ms)
+Completed 200 OK in 23ms (Views: 8.2ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-25 16:03:50 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."name" = $1 LIMIT $2[0m  [["name", "Al"], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (33.92ms)
+Completed 200 OK in 70ms (Views: 44.2ms | ActiveRecord: 15.3ms)
+
+
+Started GET "/api/v1/users/1/picks" for 127.0.0.1 at 2017-10-25 16:11:43 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers]   [1m[36mWeek Load (0.6ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.6ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (31.22ms)
+Completed 200 OK in 34ms (Views: 26.3ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/api/v1/users/2/picks" for 127.0.0.1 at 2017-10-25 16:11:57 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers]   [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (11.4ms)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/api/v1/users/picks" for 127.0.0.1 at 2017-10-25 16:13:21 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"picks"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 3ms (ActiveRecord: 0.6ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=picks):
+  
+app/controllers/api/v1/users_controller.rb:23:in `show'
+Started GET "/api/v1/users/picks" for 127.0.0.1 at 2017-10-25 16:13:24 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"picks"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.3ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=picks):
+  
+app/controllers/api/v1/users_controller.rb:23:in `show'
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-10-25 16:13:29 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (3.92ms)
+Completed 200 OK in 6ms (Views: 4.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/v1/users/2" for 127.0.0.1 at 2017-10-25 16:13:33 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (2.9ms)
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/v1/users/2/picks" for 127.0.0.1 at 2017-10-25 16:13:39 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.1ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (7.7ms)
+Completed 200 OK in 11ms (Views: 9.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/v1/users/1" for 127.0.0.1 at 2017-10-25 16:13:55 -0400
+Processing by Api::V1::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (2.99ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/v1/users/1/picks" for 127.0.0.1 at 2017-10-25 16:14:02 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers]   [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (9.93ms)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/api/v1/users/2/picks" for 127.0.0.1 at 2017-10-25 16:14:14 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers]   [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (11.83ms)
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/api/v1/users/2/picks" for 127.0.0.1 at 2017-10-25 16:15:12 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.1ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (19.16ms)
+Completed 200 OK in 35ms (Views: 22.5ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/api/v1/users/1/picks" for 127.0.0.1 at 2017-10-25 16:18:40 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (1.1ms)
+Completed 200 OK in 30ms (Views: 8.9ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/api/v1/users/0/picks" for 127.0.0.1 at 2017-10-25 16:18:46 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"0"}
+  [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (0.09ms)
+Completed 200 OK in 13ms (Views: 0.4ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/v1/users/1/picks" for 127.0.0.1 at 2017-10-25 16:18:50 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (0.1ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/users/2/picks" for 127.0.0.1 at 2017-10-25 16:18:56 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (0.08ms)
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/v1/users/1/picks" for 127.0.0.1 at 2017-10-25 16:19:07 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (0.08ms)
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/users/2/picks" for 127.0.0.1 at 2017-10-25 16:19:21 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (0.08ms)
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/v1/users/2/picks" for 127.0.0.1 at 2017-10-25 16:19:54 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (0.08ms)
+Completed 200 OK in 12ms (Views: 0.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/v1/users/1/picks" for 127.0.0.1 at 2017-10-25 16:19:56 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers]   [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (34.19ms)
+Completed 200 OK in 41ms (Views: 31.1ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/api/v1/users/1/picks" for 127.0.0.1 at 2017-10-25 16:20:40 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers]   [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (25.26ms)
+Completed 200 OK in 40ms (Views: 22.6ms | ActiveRecord: 8.9ms)
+
+
+Started GET "/api/v1/users/2/picks" for 127.0.0.1 at 2017-10-25 16:21:18 -0400
+Processing by Api::V1::PicksController#index as HTML
+  Parameters: {"user_id"=>"2"}
+  [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (0.09ms)
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.5ms)
+
+
