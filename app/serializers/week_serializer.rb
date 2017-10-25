@@ -9,5 +9,5 @@ class WeekSerializer < ActiveModel::Serializer
     end
   end
 
-  attributes :id, :week_number, :games
+  attributes :id, :week_number, :games, :picks
 end
