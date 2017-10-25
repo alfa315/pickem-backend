@@ -13,7 +13,7 @@ class Api::V1::PicksController < ApplicationController
         end
         @pick.update(guess_id: pick[:guessId])
       else
-        @pick = Pick.create(game_id: pick[:gameId], guess_id: pick[:guessId], week: Week.get_week_by_week_number(pick[:weekNumber]), user: @user)
+        @pick = @user.picks.create(game_id: pick[:gameId], guess_id: pick[:guessId], week: Week.get_week_by_week_number(pick[:weekNumber]))
       end
     end
     render json: @user.week_picks(@pick.week.week_number)

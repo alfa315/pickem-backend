@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-al = User.create(name: 'Al', wins: 0, losses: 0)
+al = User.create(name: 'Al', wins: 0, total_picks: 0)
 
-will = User.create(name: 'Will', wins: 0, losses: 0)
+will = User.create(name: 'Will', wins: 0, total_picks: 0)
 
 
 
