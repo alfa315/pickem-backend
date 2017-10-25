@@ -1,6 +1,8 @@
 class Api::V1::PicksController < ApplicationController
   def index
-   @picks = Pick.all
+   @picks = Pick.select do |pick|
+     pick.user_id == params[:user_id].to_i
+   end
    render json: @picks
   end
 

@@ -3,10 +3,15 @@ module Api
 
     class UsersController < ApplicationController
 
-      def index
+     def index
        @users = User.all
        render json: @users
-      end
+     end
+
+     def create
+       @user = User.create(name: params[:_json][:name], wins: 0, total_picks: 0)
+       render json: @user
+     end
 
      def update
        @user = User.find(params[:id])
@@ -28,6 +33,11 @@ module Api
        @user = User.find(params[:id])
       #  byebug
        render json: @user.week_picks(params[:week_number].to_i)
+     end
+
+     def user_by_name
+       @user = User.find_by(name: params[:name])
+       render json: @user
      end
 
      private
