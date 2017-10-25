@@ -9,7 +9,7 @@ module Api
      end
 
      def create
-       @user = User.create(name: params[:_json][:name], wins: 0, total_picks: 0)
+       @user = User.create(name: params[:_json], wins: 0, total_picks: 0)
        render json: @user
      end
 
@@ -36,7 +36,8 @@ module Api
      end
 
      def user_by_name
-       @user = User.find_by(name: params[:name])
+       name = params[:name]
+       @user = User.where('lower(name) = ?', name.downcase).first
        render json: @user
      end
 
