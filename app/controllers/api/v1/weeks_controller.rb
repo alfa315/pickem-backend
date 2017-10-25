@@ -21,6 +21,14 @@ class Api::V1::WeeksController < ApplicationController
    render json: @week
  end
 
+ def show_picks
+   @week = Week.find(params[:id])
+   @pick = @week.picks.select do |pick|
+     pick.user.id == params[:user_id].to_i
+   end
+   render json: @pick
+ end
+
  private
  def week_params
    params.permit(:name)

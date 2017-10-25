@@ -10,4 +10,6 @@ Rails.application.routes.draw do
     end
   end
   get '/api/v1/users/:id/picks/week/:week_number', to: 'api/v1/users#show_week'
+
+  get '/api/v1/weeks/:id/users/:user_id', to: 'api/v1/weeks#show_picks'
 end

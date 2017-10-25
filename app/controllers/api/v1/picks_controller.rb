@@ -13,7 +13,7 @@ class Api::V1::PicksController < ApplicationController
         end
         @pick.update(game_id: pick[:game_id], guess_id: pick[:guess_id] , user_id: params[:user_id])
       else
-        @pick = Pick.create(game_id: pick[:game_id], guess_id: pick[:guess_id] , user_id: params[:user_id])
+        @pick = Pick.create(game_id: pick[:game_id], guess_id: pick[:guess_id] , week_id: 7, user_id: params[:user_id])
       end
     end
     render json: @user.week_picks(@user.picks.last.game.week_id)
@@ -30,6 +30,7 @@ class Api::V1::PicksController < ApplicationController
      render json: {errors: @pick.errors.full_messages}, status: 422
    end
  end
+
 
  private
  def pick_params
