@@ -1,10 +1,10 @@
 class Game < ApplicationRecord
   belongs_to :home_team, class_name: "Team", :foreign_key => :home_team_id
   belongs_to :away_team, class_name: "Team", :foreign_key => :away_team_id
-  belongs_to :winning_team, class_name: "Team", :foreign_key => :winning_team_id
+  belongs_to :winning_team, class_name: "Team", :foreign_key => :winning_team_id, optional: true
   has_many :picks
   belongs_to :week
-  validates :winning_team, inclusion: {in: [0, :home_team, :away_team]}
+
 
   def set_winner(str = 'home')
     if str.downcase == 'home'
