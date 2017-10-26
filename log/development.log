@@ -17156,3 +17156,1537 @@ Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 2.9ms)
 Completed 200 OK in 48ms (Views: 30.4ms | ActiveRecord: 13.7ms)
 
 
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-10-26 09:04:44 -0400
+  [1m[35m (3.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (30.12ms)
+Completed 200 OK in 81ms (Views: 58.6ms | ActiveRecord: 14.7ms)
+
+
+Started POST "/api/v1/users/1/picks/" for 127.0.0.1 at 2017-10-26 09:05:11 -0400
+Processing by Api::V1::PicksController#create as */*
+  Parameters: {"_json"=>[{"gameId"=>20, "guessId"=>20, "weekNumber"=>8, "userId"=>1}, {"gameId"=>19, "guessId"=>11, "weekNumber"=>8, "userId"=>1}, {"gameId"=>18, "guessId"=>8, "weekNumber"=>8, "userId"=>1}, {"gameId"=>17, "guessId"=>27, "weekNumber"=>8, "userId"=>1}, {"gameId"=>16, "guessId"=>4, "weekNumber"=>8, "userId"=>1}, {"gameId"=>15, "guessId"=>14, "weekNumber"=>8, "userId"=>1}, {"gameId"=>14, "guessId"=>12, "weekNumber"=>8, "userId"=>1}, {"gameId"=>13, "guessId"=>32, "weekNumber"=>8, "userId"=>1}, {"gameId"=>12, "guessId"=>19, "weekNumber"=>8, "userId"=>1}, {"gameId"=>11, "guessId"=>22, "weekNumber"=>8, "userId"=>1}, {"gameId"=>10, "guessId"=>10, "weekNumber"=>8, "userId"=>1}, {"gameId"=>9, "guessId"=>24, "weekNumber"=>8, "userId"=>1}, {"gameId"=>8, "guessId"=>18, "weekNumber"=>8, "userId"=>1}], "user_id"=>"1", "pick"=>{}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (9.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 20], ["user_id", 1], ["guess_id", 20], ["created_at", "2017-10-26 13:05:11.359157"], ["updated_at", "2017-10-26 13:05:11.359157"], ["week_id", 8]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 19], ["user_id", 1], ["guess_id", 11], ["created_at", "2017-10-26 13:05:11.374407"], ["updated_at", "2017-10-26 13:05:11.374407"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 18], ["user_id", 1], ["guess_id", 8], ["created_at", "2017-10-26 13:05:11.380243"], ["updated_at", "2017-10-26 13:05:11.380243"], ["week_id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 17], ["user_id", 1], ["guess_id", 27], ["created_at", "2017-10-26 13:05:11.385645"], ["updated_at", "2017-10-26 13:05:11.385645"], ["week_id", 8]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 16], ["user_id", 1], ["guess_id", 4], ["created_at", "2017-10-26 13:05:11.392346"], ["updated_at", "2017-10-26 13:05:11.392346"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 15], ["user_id", 1], ["guess_id", 14], ["created_at", "2017-10-26 13:05:11.396593"], ["updated_at", "2017-10-26 13:05:11.396593"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 14], ["user_id", 1], ["guess_id", 12], ["created_at", "2017-10-26 13:05:11.401344"], ["updated_at", "2017-10-26 13:05:11.401344"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 13], ["user_id", 1], ["guess_id", 32], ["created_at", "2017-10-26 13:05:11.405849"], ["updated_at", "2017-10-26 13:05:11.405849"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 12], ["user_id", 1], ["guess_id", 19], ["created_at", "2017-10-26 13:05:11.410156"], ["updated_at", "2017-10-26 13:05:11.410156"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 11], ["user_id", 1], ["guess_id", 22], ["created_at", "2017-10-26 13:05:11.414855"], ["updated_at", "2017-10-26 13:05:11.414855"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 10], ["user_id", 1], ["guess_id", 10], ["created_at", "2017-10-26 13:05:11.419349"], ["updated_at", "2017-10-26 13:05:11.419349"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 9], ["user_id", 1], ["guess_id", 24], ["created_at", "2017-10-26 13:05:11.424101"], ["updated_at", "2017-10-26 13:05:11.424101"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 8], ["user_id", 1], ["guess_id", 18], ["created_at", "2017-10-26 13:05:11.429771"], ["updated_at", "2017-10-26 13:05:11.429771"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (3.82ms)
+Completed 200 OK in 127ms (Views: 8.2ms | ActiveRecord: 51.1ms)
+
+
+Started POST "/api/v1/users/1/picks/" for 127.0.0.1 at 2017-10-26 09:05:12 -0400
+Processing by Api::V1::PicksController#create as */*
+  Parameters: {"_json"=>[{"gameId"=>20, "guessId"=>20, "weekNumber"=>8, "userId"=>1}, {"gameId"=>19, "guessId"=>11, "weekNumber"=>8, "userId"=>1}, {"gameId"=>18, "guessId"=>8, "weekNumber"=>8, "userId"=>1}, {"gameId"=>17, "guessId"=>27, "weekNumber"=>8, "userId"=>1}, {"gameId"=>16, "guessId"=>4, "weekNumber"=>8, "userId"=>1}, {"gameId"=>15, "guessId"=>14, "weekNumber"=>8, "userId"=>1}, {"gameId"=>14, "guessId"=>12, "weekNumber"=>8, "userId"=>1}, {"gameId"=>13, "guessId"=>32, "weekNumber"=>8, "userId"=>1}, {"gameId"=>12, "guessId"=>19, "weekNumber"=>8, "userId"=>1}, {"gameId"=>11, "guessId"=>22, "weekNumber"=>8, "userId"=>1}, {"gameId"=>10, "guessId"=>10, "weekNumber"=>8, "userId"=>1}, {"gameId"=>9, "guessId"=>24, "weekNumber"=>8, "userId"=>1}, {"gameId"=>8, "guessId"=>18, "weekNumber"=>8, "userId"=>1}], "user_id"=>"1", "pick"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mCACHE Week Load (0.0ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (4.06ms)
+Completed 200 OK in 52ms (Views: 4.7ms | ActiveRecord: 7.1ms)
+
+
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 8]]
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (7.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 13:08:36.480419"], ["id", 12]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (6.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER($1) AND ("users"."id" != $2) LIMIT $3[0m  [["name", "Al"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "wins" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["wins", 1], ["updated_at", "2017-10-26 13:08:36.520733"], ["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mPick Load (0.9ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 13:08:38.069809"], ["id", 11]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER($1) AND ("users"."id" != $2) LIMIT $3[0m  [["name", "Al"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "wins" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["wins", 2], ["updated_at", "2017-10-26 13:08:38.075270"], ["id", 1]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 13:08:39.354342"], ["id", 10]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER($1) AND ("users"."id" != $2) LIMIT $3[0m  [["name", "Al"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "wins" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["wins", 3], ["updated_at", "2017-10-26 13:08:39.361356"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 13:08:40.747163"], ["id", 9]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER($1) AND ("users"."id" != $2) LIMIT $3[0m  [["name", "Al"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "wins" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["wins", 4], ["updated_at", "2017-10-26 13:08:40.754281"], ["id", 1]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mPick Load (0.8ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 13]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 14]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 15]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 13:08:46.186371"], ["id", 6]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER($1) AND ("users"."id" != $2) LIMIT $3[0m  [["name", "Al"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "wins" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["wins", 5], ["updated_at", "2017-10-26 13:08:46.194443"], ["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (1.8ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 16]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 17]]
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 18]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 19]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 13:08:51.134020"], ["id", 2]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER($1) AND ("users"."id" != $2) LIMIT $3[0m  [["name", "Al"], ["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "users" SET "wins" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["wins", 6], ["updated_at", "2017-10-26 13:08:51.141022"], ["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 20]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-10-26 09:09:48 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (33.2ms)
+Completed 200 OK in 68ms (Views: 53.8ms | ActiveRecord: 9.7ms)
+
+
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1071686426606965050)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveWinsFromUser (20171026133955)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.0ms)[0m  [1m[35mALTER TABLE "users" DROP "wins"[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171026133955"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveTotalPicksFromUser (20171026134045)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "users" DROP "total_picks"[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171026134045"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1071686426606965050)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (193.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "pickem_backend_development"[0m
+  [1m[35m (164.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "pickem_backend_test"[0m
+  [1m[35m (472.8ms)[0m  [1m[35mCREATE DATABASE "pickem_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (415.0ms)[0m  [1m[35mCREATE DATABASE "pickem_backend_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (20.6ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "home_team_id" integer, "away_team_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer, "winning_team_id" integer DEFAULT 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "picks" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "picks" ("id" bigserial primary key, "game_id" integer, "user_id" integer, "guess_id" integer, "was_right" boolean DEFAULT 'f', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "team_color" character varying)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "weeks" CASCADE[0m
+  [1m[35m (2.3ms)[0m  [1m[35mCREATE TABLE "weeks" ("id" bigserial primary key, "week_number" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171026134045)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171024012120),
+(20171024012306),
+(20171024134306),
+(20171024143014),
+(20171024143113),
+(20171024144007),
+(20171024145255),
+(20171024161039),
+(20171024182348),
+(20171024182447),
+(20171025134257),
+(20171025170837),
+(20171025170931),
+(20171026133955);
+
+[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-26 13:43:19.599699"], ["updated_at", "2017-10-26 13:43:19.599699"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "home_team_id" integer, "away_team_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer, "winning_team_id" integer DEFAULT 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "picks" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "picks" ("id" bigserial primary key, "game_id" integer, "user_id" integer, "guess_id" integer, "was_right" boolean DEFAULT 'f', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "team_color" character varying)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (8.5ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "weeks" CASCADE[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE TABLE "weeks" ("id" bigserial primary key, "week_number" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171026134045)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171024012120),
+(20171024012306),
+(20171024134306),
+(20171024143014),
+(20171024143113),
+(20171024144007),
+(20171024145255),
+(20171024161039),
+(20171024182348),
+(20171024182447),
+(20171025134257),
+(20171025170837),
+(20171025170931),
+(20171026133955);
+
+[0m
+  [1m[35m (4.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-26 13:43:19.679066"], ["updated_at", "2017-10-26 13:43:19.679066"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (197.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "pickem_backend_development"[0m
+  [1m[35m (194.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "pickem_backend_test"[0m
+  [1m[35m (370.3ms)[0m  [1m[35mCREATE DATABASE "pickem_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (338.9ms)[0m  [1m[35mCREATE DATABASE "pickem_backend_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "home_team_id" integer, "away_team_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer, "winning_team_id" integer DEFAULT 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "picks" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "picks" ("id" bigserial primary key, "game_id" integer, "user_id" integer, "guess_id" integer, "was_right" boolean DEFAULT 'f', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "team_color" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "weeks" CASCADE[0m
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE TABLE "weeks" ("id" bigserial primary key, "week_number" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171026134045)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171024012120),
+(20171024012306),
+(20171024134306),
+(20171024143014),
+(20171024143113),
+(20171024144007),
+(20171024145255),
+(20171024161039),
+(20171024182348),
+(20171024182447),
+(20171025134257),
+(20171025170837),
+(20171025170931),
+(20171026133955);
+
+[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-26 13:46:06.334456"], ["updated_at", "2017-10-26 13:46:06.334456"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "home_team_id" integer, "away_team_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer, "winning_team_id" integer DEFAULT 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "picks" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "picks" ("id" bigserial primary key, "game_id" integer, "user_id" integer, "guess_id" integer, "was_right" boolean DEFAULT 'f', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "team_color" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "weeks" CASCADE[0m
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "weeks" ("id" bigserial primary key, "week_number" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171026134045)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171024012120),
+(20171024012306),
+(20171024134306),
+(20171024143014),
+(20171024143113),
+(20171024144007),
+(20171024145255),
+(20171024161039),
+(20171024182348),
+(20171024182447),
+(20171025134257),
+(20171025170837),
+(20171025170931),
+(20171026133955);
+
+[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-26 13:46:06.408941"], ["updated_at", "2017-10-26 13:46:06.408941"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (189.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "pickem_backend_development"[0m
+  [1m[35m (198.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "pickem_backend_test"[0m
+  [1m[35m (406.2ms)[0m  [1m[35mCREATE DATABASE "pickem_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (369.9ms)[0m  [1m[35mCREATE DATABASE "pickem_backend_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "home_team_id" integer, "away_team_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer, "winning_team_id" integer DEFAULT 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "picks" CASCADE[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "picks" ("id" bigserial primary key, "game_id" integer, "user_id" integer, "guess_id" integer, "was_right" boolean DEFAULT 'f', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "team_color" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "weeks" CASCADE[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "weeks" ("id" bigserial primary key, "week_number" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171026134045)[0m
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171024012120),
+(20171024012306),
+(20171024134306),
+(20171024143014),
+(20171024143113),
+(20171024144007),
+(20171024145255),
+(20171024161039),
+(20171024182348),
+(20171024182447),
+(20171025134257),
+(20171025170837),
+(20171025170931),
+(20171026133955);
+
+[0m
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-26 14:01:01.801302"], ["updated_at", "2017-10-26 14:01:01.801302"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (2.0ms)[0m  [1m[35mDROP TABLE IF EXISTS "games" CASCADE[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "games" ("id" bigserial primary key, "home_team_id" integer, "away_team_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer, "winning_team_id" integer DEFAULT 0)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "picks" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "picks" ("id" bigserial primary key, "game_id" integer, "user_id" integer, "guess_id" integer, "was_right" boolean DEFAULT 'f', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "week_id" integer)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "teams" CASCADE[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "teams" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "team_color" character varying)[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "weeks" CASCADE[0m
+  [1m[35m (2.7ms)[0m  [1m[35mCREATE TABLE "weeks" ("id" bigserial primary key, "week_number" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20171026134045)[0m
+  [1m[35m (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20171024012120),
+(20171024012306),
+(20171024134306),
+(20171024143014),
+(20171024143113),
+(20171024144007),
+(20171024145255),
+(20171024161039),
+(20171024182348),
+(20171024182447),
+(20171025134257),
+(20171025170837),
+(20171025170931),
+(20171026133955);
+
+[0m
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2017-10-26 14:01:01.867080"], ["updated_at", "2017-10-26 14:01:01.867080"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER($1) LIMIT $2[0m  [["name", "Al"], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Al"], ["created_at", "2017-10-26 14:01:01.911480"], ["updated_at", "2017-10-26 14:01:01.911480"]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE LOWER("users"."name") = LOWER($1) LIMIT $2[0m  [["name", "Will"], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "users" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Will"], ["created_at", "2017-10-26 14:01:01.916421"], ["updated_at", "2017-10-26 14:01:01.916421"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Atlanta Falcons"], ["created_at", "2017-10-26 14:01:01.931253"], ["updated_at", "2017-10-26 14:01:01.931253"], ["team_color", "#A6192E"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Carolina Panthers"], ["created_at", "2017-10-26 14:01:01.935145"], ["updated_at", "2017-10-26 14:01:01.935145"], ["team_color", "#0085CA"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "New Orleans Saints"], ["created_at", "2017-10-26 14:01:01.937665"], ["updated_at", "2017-10-26 14:01:01.937665"], ["team_color", "#A28D5B"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tampa Bay Buccaneers"], ["created_at", "2017-10-26 14:01:01.939953"], ["updated_at", "2017-10-26 14:01:01.939953"], ["team_color", "#C8102E"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "New York Giants"], ["created_at", "2017-10-26 14:01:01.942602"], ["updated_at", "2017-10-26 14:01:01.942602"], ["team_color", "#001E62"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Philadelphia Eagles"], ["created_at", "2017-10-26 14:01:01.944847"], ["updated_at", "2017-10-26 14:01:01.944847"], ["team_color", "#004851"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Dallas Cowboys"], ["created_at", "2017-10-26 14:01:01.947116"], ["updated_at", "2017-10-26 14:01:01.947116"], ["team_color", "#003594"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Washington Redskins"], ["created_at", "2017-10-26 14:01:01.949404"], ["updated_at", "2017-10-26 14:01:01.949404"], ["team_color", "#862633"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Green Bay Packers"], ["created_at", "2017-10-26 14:01:01.951685"], ["updated_at", "2017-10-26 14:01:01.951685"], ["team_color", "#175E33"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Minnesota Vikings"], ["created_at", "2017-10-26 14:01:01.953267"], ["updated_at", "2017-10-26 14:01:01.953267"], ["team_color", " #512D6D"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Detroit Lions"], ["created_at", "2017-10-26 14:01:01.956161"], ["updated_at", "2017-10-26 14:01:01.956161"], ["team_color", "#0069B1"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Chicago Bears"], ["created_at", "2017-10-26 14:01:01.958579"], ["updated_at", "2017-10-26 14:01:01.958579"], ["team_color", "#051C2C"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Seattle Seahawks"], ["created_at", "2017-10-26 14:01:01.960863"], ["updated_at", "2017-10-26 14:01:01.960863"], ["team_color", "#001433"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "San Francisco 49ers"], ["created_at", "2017-10-26 14:01:01.963081"], ["updated_at", "2017-10-26 14:01:01.963081"], ["team_color", "#9B2743"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Arizona Cardinals"], ["created_at", "2017-10-26 14:01:01.965548"], ["updated_at", "2017-10-26 14:01:01.965548"], ["team_color", "#9B2743"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Los Angeles Rams"], ["created_at", "2017-10-26 14:01:01.967642"], ["updated_at", "2017-10-26 14:01:01.967642"], ["team_color", "#002244"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Denver Broncos"], ["created_at", "2017-10-26 14:01:01.969459"], ["updated_at", "2017-10-26 14:01:01.969459"], ["team_color", "#FC4C02"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Los Angeles Chargers"], ["created_at", "2017-10-26 14:01:01.971592"], ["updated_at", "2017-10-26 14:01:01.971592"], ["team_color", "#0C2340"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Oakland Raiders"], ["created_at", "2017-10-26 14:01:01.973504"], ["updated_at", "2017-10-26 14:01:01.973504"], ["team_color", "#101820"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Kansas City Chiefs"], ["created_at", "2017-10-26 14:01:01.975619"], ["updated_at", "2017-10-26 14:01:01.975619"], ["team_color", "#C8102E"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "New England Patriots"], ["created_at", "2017-10-26 14:01:01.978063"], ["updated_at", "2017-10-26 14:01:01.978063"], ["team_color", "#0C2340"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "New York Jets"], ["created_at", "2017-10-26 14:01:01.980218"], ["updated_at", "2017-10-26 14:01:01.980218"], ["team_color", "#0C371D"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Buffalo Bills"], ["created_at", "2017-10-26 14:01:01.981940"], ["updated_at", "2017-10-26 14:01:01.981940"], ["team_color", "#00338D"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Miami Dolphins"], ["created_at", "2017-10-26 14:01:01.983877"], ["updated_at", "2017-10-26 14:01:01.983877"], ["team_color", "#008E97"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Indianapolis Colts"], ["created_at", "2017-10-26 14:01:01.986051"], ["updated_at", "2017-10-26 14:01:01.986051"], ["team_color", "#001489"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Tennessee Titans"], ["created_at", "2017-10-26 14:01:01.988468"], ["updated_at", "2017-10-26 14:01:01.988468"], ["team_color", "#0C2340"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Houston Texans"], ["created_at", "2017-10-26 14:01:01.990798"], ["updated_at", "2017-10-26 14:01:01.990798"], ["team_color", "#091F2C"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Jacksonville Jaguars"], ["created_at", "2017-10-26 14:01:01.993269"], ["updated_at", "2017-10-26 14:01:01.993269"], ["team_color", "#006073"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Pittsburgh Steelers"], ["created_at", "2017-10-26 14:01:01.996077"], ["updated_at", "2017-10-26 14:01:01.996077"], ["team_color", "#FFB81C"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Baltimore Ravens"], ["created_at", "2017-10-26 14:01:01.998365"], ["updated_at", "2017-10-26 14:01:01.998365"], ["team_color", "#241773"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Cleveland Browns"], ["created_at", "2017-10-26 14:01:02.000305"], ["updated_at", "2017-10-26 14:01:02.000305"], ["team_color", "#382F2D"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "teams" ("name", "created_at", "updated_at", "team_color") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Cincinnati Bengals"], ["created_at", "2017-10-26 14:01:02.002379"], ["updated_at", "2017-10-26 14:01:02.002379"], ["team_color", "#FC4C02"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 1], ["created_at", "2017-10-26 14:01:02.017141"], ["updated_at", "2017-10-26 14:01:02.017141"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 30], ["away_team_id", 29], ["created_at", "2017-10-26 14:01:02.042131"], ["updated_at", "2017-10-26 14:01:02.042131"], ["week_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 2], ["created_at", "2017-10-26 14:01:02.045243"], ["updated_at", "2017-10-26 14:01:02.045243"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 22], ["away_team_id", 21], ["created_at", "2017-10-26 14:01:02.047607"], ["updated_at", "2017-10-26 14:01:02.047607"], ["week_id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 3], ["created_at", "2017-10-26 14:01:02.049635"], ["updated_at", "2017-10-26 14:01:02.049635"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 3], ["away_team_id", 1], ["created_at", "2017-10-26 14:01:02.051636"], ["updated_at", "2017-10-26 14:01:02.051636"], ["week_id", 3]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 4], ["created_at", "2017-10-26 14:01:02.053614"], ["updated_at", "2017-10-26 14:01:02.053614"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 12], ["away_team_id", 9], ["created_at", "2017-10-26 14:01:02.055669"], ["updated_at", "2017-10-26 14:01:02.055669"], ["week_id", 4]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 5], ["created_at", "2017-10-26 14:01:02.057432"], ["updated_at", "2017-10-26 14:01:02.057432"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 31], ["away_team_id", 32], ["created_at", "2017-10-26 14:01:02.059442"], ["updated_at", "2017-10-26 14:01:02.059442"], ["week_id", 5]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 6], ["created_at", "2017-10-26 14:01:02.061462"], ["updated_at", "2017-10-26 14:01:02.061462"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 26], ["away_team_id", 28], ["created_at", "2017-10-26 14:01:02.063338"], ["updated_at", "2017-10-26 14:01:02.063338"], ["week_id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 7], ["created_at", "2017-10-26 14:01:02.064947"], ["updated_at", "2017-10-26 14:01:02.064947"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 23], ["away_team_id", 24], ["created_at", "2017-10-26 14:01:02.066958"], ["updated_at", "2017-10-26 14:01:02.066958"], ["week_id", 7]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 8], ["created_at", "2017-10-26 14:01:02.068707"], ["updated_at", "2017-10-26 14:01:02.068707"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 21], ["away_team_id", 18], ["created_at", "2017-10-26 14:01:02.070516"], ["updated_at", "2017-10-26 14:01:02.070516"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 30], ["away_team_id", 24], ["created_at", "2017-10-26 14:01:02.072472"], ["updated_at", "2017-10-26 14:01:02.072472"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 31], ["away_team_id", 10], ["created_at", "2017-10-26 14:01:02.074619"], ["updated_at", "2017-10-26 14:01:02.074619"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 22], ["away_team_id", 1], ["created_at", "2017-10-26 14:01:02.076834"], ["updated_at", "2017-10-26 14:01:02.076834"], ["week_id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 23], ["away_team_id", 19], ["created_at", "2017-10-26 14:01:02.078989"], ["updated_at", "2017-10-26 14:01:02.078989"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 32], ["away_team_id", 25], ["created_at", "2017-10-26 14:01:02.080827"], ["updated_at", "2017-10-26 14:01:02.080827"], ["week_id", 8]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 3], ["away_team_id", 12], ["created_at", "2017-10-26 14:01:02.082785"], ["updated_at", "2017-10-26 14:01:02.082785"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 6], ["away_team_id", 14], ["created_at", "2017-10-26 14:01:02.084675"], ["updated_at", "2017-10-26 14:01:02.084675"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 4], ["away_team_id", 2], ["created_at", "2017-10-26 14:01:02.086598"], ["updated_at", "2017-10-26 14:01:02.086598"], ["week_id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 13], ["away_team_id", 27], ["created_at", "2017-10-26 14:01:02.088602"], ["updated_at", "2017-10-26 14:01:02.088602"], ["week_id", 8]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 8], ["away_team_id", 7], ["created_at", "2017-10-26 14:01:02.090656"], ["updated_at", "2017-10-26 14:01:02.090656"], ["week_id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 11], ["away_team_id", 29], ["created_at", "2017-10-26 14:01:02.092343"], ["updated_at", "2017-10-26 14:01:02.092343"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 20], ["away_team_id", 17], ["created_at", "2017-10-26 14:01:02.094240"], ["updated_at", "2017-10-26 14:01:02.094240"], ["week_id", 8]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 9], ["created_at", "2017-10-26 14:01:02.095985"], ["updated_at", "2017-10-26 14:01:02.095985"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 13], ["away_team_id", 2], ["created_at", "2017-10-26 14:01:02.098021"], ["updated_at", "2017-10-26 14:01:02.098021"], ["week_id", 9]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 22], ["away_team_id", 23], ["created_at", "2017-10-26 14:01:02.100111"], ["updated_at", "2017-10-26 14:01:02.100111"], ["week_id", 9]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 26], ["away_team_id", 30], ["created_at", "2017-10-26 14:01:02.102074"], ["updated_at", "2017-10-26 14:01:02.102074"], ["week_id", 9]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 3], ["away_team_id", 4], ["created_at", "2017-10-26 14:01:02.103994"], ["updated_at", "2017-10-26 14:01:02.103994"], ["week_id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 5], ["away_team_id", 16], ["created_at", "2017-10-26 14:01:02.105890"], ["updated_at", "2017-10-26 14:01:02.105890"], ["week_id", 9]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 6], ["away_team_id", 17], ["created_at", "2017-10-26 14:01:02.108022"], ["updated_at", "2017-10-26 14:01:02.108022"], ["week_id", 9]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 2], ["away_team_id", 1], ["created_at", "2017-10-26 14:01:02.110003"], ["updated_at", "2017-10-26 14:01:02.110003"], ["week_id", 9]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 28], ["away_team_id", 32], ["created_at", "2017-10-26 14:01:02.111966"], ["updated_at", "2017-10-26 14:01:02.111966"], ["week_id", 9]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 27], ["away_team_id", 25], ["created_at", "2017-10-26 14:01:02.113972"], ["updated_at", "2017-10-26 14:01:02.113972"], ["week_id", 9]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 14], ["away_team_id", 15], ["created_at", "2017-10-26 14:01:02.115958"], ["updated_at", "2017-10-26 14:01:02.115958"], ["week_id", 9]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 13], ["away_team_id", 8], ["created_at", "2017-10-26 14:01:02.118129"], ["updated_at", "2017-10-26 14:01:02.118129"], ["week_id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 7], ["away_team_id", 20], ["created_at", "2017-10-26 14:01:02.119823"], ["updated_at", "2017-10-26 14:01:02.119823"], ["week_id", 9]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 24], ["away_team_id", 19], ["created_at", "2017-10-26 14:01:02.121823"], ["updated_at", "2017-10-26 14:01:02.121823"], ["week_id", 9]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 9], ["away_team_id", 11], ["created_at", "2017-10-26 14:01:02.124373"], ["updated_at", "2017-10-26 14:01:02.124373"], ["week_id", 9]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 10], ["created_at", "2017-10-26 14:01:02.126437"], ["updated_at", "2017-10-26 14:01:02.126437"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 12], ["away_team_id", 9], ["created_at", "2017-10-26 14:01:02.128695"], ["updated_at", "2017-10-26 14:01:02.128695"], ["week_id", 10]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 15], ["away_team_id", 13], ["created_at", "2017-10-26 14:01:02.130759"], ["updated_at", "2017-10-26 14:01:02.130759"], ["week_id", 10]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 23], ["away_team_id", 3], ["created_at", "2017-10-26 14:01:02.132758"], ["updated_at", "2017-10-26 14:01:02.132758"], ["week_id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 11], ["away_team_id", 31], ["created_at", "2017-10-26 14:01:02.134436"], ["updated_at", "2017-10-26 14:01:02.134436"], ["week_id", 10]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 25], ["away_team_id", 29], ["created_at", "2017-10-26 14:01:02.136608"], ["updated_at", "2017-10-26 14:01:02.136608"], ["week_id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 28], ["away_team_id", 18], ["created_at", "2017-10-26 14:01:02.138761"], ["updated_at", "2017-10-26 14:01:02.138761"], ["week_id", 10]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 4], ["away_team_id", 22], ["created_at", "2017-10-26 14:01:02.140901"], ["updated_at", "2017-10-26 14:01:02.140901"], ["week_id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 26], ["away_team_id", 32], ["created_at", "2017-10-26 14:01:02.143058"], ["updated_at", "2017-10-26 14:01:02.143058"], ["week_id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 8], ["away_team_id", 10], ["created_at", "2017-10-26 14:01:02.145340"], ["updated_at", "2017-10-26 14:01:02.145340"], ["week_id", 10]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 16], ["away_team_id", 27], ["created_at", "2017-10-26 14:01:02.147556"], ["updated_at", "2017-10-26 14:01:02.147556"], ["week_id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 1], ["away_team_id", 7], ["created_at", "2017-10-26 14:01:02.149661"], ["updated_at", "2017-10-26 14:01:02.149661"], ["week_id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 14], ["away_team_id", 5], ["created_at", "2017-10-26 14:01:02.151579"], ["updated_at", "2017-10-26 14:01:02.151579"], ["week_id", 10]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 17], ["away_team_id", 21], ["created_at", "2017-10-26 14:01:02.153655"], ["updated_at", "2017-10-26 14:01:02.153655"], ["week_id", 10]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 2], ["away_team_id", 24], ["created_at", "2017-10-26 14:01:02.155787"], ["updated_at", "2017-10-26 14:01:02.155787"], ["week_id", 10]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 11], ["created_at", "2017-10-26 14:01:02.157561"], ["updated_at", "2017-10-26 14:01:02.157561"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 29], ["away_team_id", 26], ["created_at", "2017-10-26 14:01:02.159629"], ["updated_at", "2017-10-26 14:01:02.159629"], ["week_id", 11]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 12], ["away_team_id", 11], ["created_at", "2017-10-26 14:01:02.161685"], ["updated_at", "2017-10-26 14:01:02.161685"], ["week_id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 31], ["away_team_id", 28], ["created_at", "2017-10-26 14:01:02.163507"], ["updated_at", "2017-10-26 14:01:02.163507"], ["week_id", 11]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 9], ["away_team_id", 30], ["created_at", "2017-10-26 14:01:02.165976"], ["updated_at", "2017-10-26 14:01:02.165976"], ["week_id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 24], ["away_team_id", 4], ["created_at", "2017-10-26 14:01:02.168087"], ["updated_at", "2017-10-26 14:01:02.168087"], ["week_id", 11]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 10], ["away_team_id", 16], ["created_at", "2017-10-26 14:01:02.170020"], ["updated_at", "2017-10-26 14:01:02.170020"], ["week_id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 3], ["away_team_id", 8], ["created_at", "2017-10-26 14:01:02.171908"], ["updated_at", "2017-10-26 14:01:02.171908"], ["week_id", 11]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 5], ["away_team_id", 20], ["created_at", "2017-10-26 14:01:02.173947"], ["updated_at", "2017-10-26 14:01:02.173947"], ["week_id", 11]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 27], ["away_team_id", 15], ["created_at", "2017-10-26 14:01:02.175966"], ["updated_at", "2017-10-26 14:01:02.175966"], ["week_id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 18], ["away_team_id", 23], ["created_at", "2017-10-26 14:01:02.177713"], ["updated_at", "2017-10-26 14:01:02.177713"], ["week_id", 11]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 17], ["away_team_id", 32], ["created_at", "2017-10-26 14:01:02.179575"], ["updated_at", "2017-10-26 14:01:02.179575"], ["week_id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 19], ["away_team_id", 21], ["created_at", "2017-10-26 14:01:02.181498"], ["updated_at", "2017-10-26 14:01:02.181498"], ["week_id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 7], ["away_team_id", 6], ["created_at", "2017-10-26 14:01:02.183248"], ["updated_at", "2017-10-26 14:01:02.183248"], ["week_id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 13], ["away_team_id", 1], ["created_at", "2017-10-26 14:01:02.185224"], ["updated_at", "2017-10-26 14:01:02.185224"], ["week_id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 12], ["created_at", "2017-10-26 14:01:02.186960"], ["updated_at", "2017-10-26 14:01:02.186960"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 8], ["away_team_id", 5], ["created_at", "2017-10-26 14:01:02.188943"], ["updated_at", "2017-10-26 14:01:02.188943"], ["week_id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 11], ["away_team_id", 10], ["created_at", "2017-10-26 14:01:02.190569"], ["updated_at", "2017-10-26 14:01:02.190569"], ["week_id", 12]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 7], ["away_team_id", 18], ["created_at", "2017-10-26 14:01:02.192328"], ["updated_at", "2017-10-26 14:01:02.192328"], ["week_id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 1], ["away_team_id", 4], ["created_at", "2017-10-26 14:01:02.194221"], ["updated_at", "2017-10-26 14:01:02.194221"], ["week_id", 12]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 32], ["away_team_id", 31], ["created_at", "2017-10-26 14:01:02.196267"], ["updated_at", "2017-10-26 14:01:02.196267"], ["week_id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 25], ["away_team_id", 26], ["created_at", "2017-10-26 14:01:02.198125"], ["updated_at", "2017-10-26 14:01:02.198125"], ["week_id", 12]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 20], ["away_team_id", 23], ["created_at", "2017-10-26 14:01:02.200206"], ["updated_at", "2017-10-26 14:01:02.200206"], ["week_id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 21], ["away_team_id", 24], ["created_at", "2017-10-26 14:01:02.202137"], ["updated_at", "2017-10-26 14:01:02.202137"], ["week_id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 22], ["away_team_id", 2], ["created_at", "2017-10-26 14:01:02.203857"], ["updated_at", "2017-10-26 14:01:02.203857"], ["week_id", 12]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 6], ["away_team_id", 12], ["created_at", "2017-10-26 14:01:02.205855"], ["updated_at", "2017-10-26 14:01:02.205855"], ["week_id", 12]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 16], ["away_team_id", 3], ["created_at", "2017-10-26 14:01:02.208286"], ["updated_at", "2017-10-26 14:01:02.208286"], ["week_id", 12]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 14], ["away_team_id", 13], ["created_at", "2017-10-26 14:01:02.210396"], ["updated_at", "2017-10-26 14:01:02.210396"], ["week_id", 12]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 19], ["away_team_id", 17], ["created_at", "2017-10-26 14:01:02.212367"], ["updated_at", "2017-10-26 14:01:02.212367"], ["week_id", 12]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 15], ["away_team_id", 28], ["created_at", "2017-10-26 14:01:02.214322"], ["updated_at", "2017-10-26 14:01:02.214322"], ["week_id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 29], ["away_team_id", 9], ["created_at", "2017-10-26 14:01:02.216232"], ["updated_at", "2017-10-26 14:01:02.216232"], ["week_id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 30], ["away_team_id", 27], ["created_at", "2017-10-26 14:01:02.217938"], ["updated_at", "2017-10-26 14:01:02.217938"], ["week_id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 13], ["created_at", "2017-10-26 14:01:02.219626"], ["updated_at", "2017-10-26 14:01:02.219626"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 7], ["away_team_id", 8], ["created_at", "2017-10-26 14:01:02.221622"], ["updated_at", "2017-10-26 14:01:02.221622"], ["week_id", 13]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 1], ["away_team_id", 10], ["created_at", "2017-10-26 14:01:02.223556"], ["updated_at", "2017-10-26 14:01:02.223556"], ["week_id", 13]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 23], ["away_team_id", 21], ["created_at", "2017-10-26 14:01:02.225790"], ["updated_at", "2017-10-26 14:01:02.225790"], ["week_id", 13]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 12], ["away_team_id", 14], ["created_at", "2017-10-26 14:01:02.227739"], ["updated_at", "2017-10-26 14:01:02.227739"], ["week_id", 13]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 9], ["away_team_id", 4], ["created_at", "2017-10-26 14:01:02.229934"], ["updated_at", "2017-10-26 14:01:02.229934"], ["week_id", 13]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 26], ["away_team_id", 27], ["created_at", "2017-10-26 14:01:02.231695"], ["updated_at", "2017-10-26 14:01:02.231695"], ["week_id", 13]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 24], ["away_team_id", 17], ["created_at", "2017-10-26 14:01:02.233436"], ["updated_at", "2017-10-26 14:01:02.233436"], ["week_id", 13]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 3], ["away_team_id", 2], ["created_at", "2017-10-26 14:01:02.235275"], ["updated_at", "2017-10-26 14:01:02.235275"], ["week_id", 13]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 22], ["away_team_id", 20], ["created_at", "2017-10-26 14:01:02.237211"], ["updated_at", "2017-10-26 14:01:02.237211"], ["week_id", 13]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 28], ["away_team_id", 25], ["created_at", "2017-10-26 14:01:02.239243"], ["updated_at", "2017-10-26 14:01:02.239243"], ["week_id", 13]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 30], ["away_team_id", 11], ["created_at", "2017-10-26 14:01:02.241410"], ["updated_at", "2017-10-26 14:01:02.241410"], ["week_id", 13]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 18], ["away_team_id", 31], ["created_at", "2017-10-26 14:01:02.243292"], ["updated_at", "2017-10-26 14:01:02.243292"], ["week_id", 13]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 19], ["away_team_id", 5], ["created_at", "2017-10-26 14:01:02.244964"], ["updated_at", "2017-10-26 14:01:02.244964"], ["week_id", 13]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 15], ["away_team_id", 16], ["created_at", "2017-10-26 14:01:02.247105"], ["updated_at", "2017-10-26 14:01:02.247105"], ["week_id", 13]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 13], ["away_team_id", 6], ["created_at", "2017-10-26 14:01:02.249140"], ["updated_at", "2017-10-26 14:01:02.249140"], ["week_id", 13]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 32], ["away_team_id", 29], ["created_at", "2017-10-26 14:01:02.251088"], ["updated_at", "2017-10-26 14:01:02.251088"], ["week_id", 13]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 14], ["created_at", "2017-10-26 14:01:02.252795"], ["updated_at", "2017-10-26 14:01:02.252795"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 1], ["away_team_id", 3], ["created_at", "2017-10-26 14:01:02.254767"], ["updated_at", "2017-10-26 14:01:02.254767"], ["week_id", 14]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 23], ["away_team_id", 25], ["created_at", "2017-10-26 14:01:02.256712"], ["updated_at", "2017-10-26 14:01:02.256712"], ["week_id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 32], ["away_team_id", 12], ["created_at", "2017-10-26 14:01:02.258331"], ["updated_at", "2017-10-26 14:01:02.258331"], ["week_id", 14]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 31], ["away_team_id", 9], ["created_at", "2017-10-26 14:01:02.260591"], ["updated_at", "2017-10-26 14:01:02.260591"], ["week_id", 14]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 20], ["away_team_id", 19], ["created_at", "2017-10-26 14:01:02.262626"], ["updated_at", "2017-10-26 14:01:02.262626"], ["week_id", 14]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 4], ["away_team_id", 11], ["created_at", "2017-10-26 14:01:02.264537"], ["updated_at", "2017-10-26 14:01:02.264537"], ["week_id", 14]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 2], ["away_team_id", 10], ["created_at", "2017-10-26 14:01:02.266470"], ["updated_at", "2017-10-26 14:01:02.266470"], ["week_id", 14]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 28], ["away_team_id", 13], ["created_at", "2017-10-26 14:01:02.268355"], ["updated_at", "2017-10-26 14:01:02.268355"], ["week_id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 27], ["away_team_id", 14], ["created_at", "2017-10-26 14:01:02.270350"], ["updated_at", "2017-10-26 14:01:02.270350"], ["week_id", 14]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 17], ["away_team_id", 22], ["created_at", "2017-10-26 14:01:02.272718"], ["updated_at", "2017-10-26 14:01:02.272718"], ["week_id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 15], ["away_team_id", 26], ["created_at", "2017-10-26 14:01:02.274997"], ["updated_at", "2017-10-26 14:01:02.274997"], ["week_id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 18], ["away_team_id", 8], ["created_at", "2017-10-26 14:01:02.277298"], ["updated_at", "2017-10-26 14:01:02.277298"], ["week_id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 16], ["away_team_id", 6], ["created_at", "2017-10-26 14:01:02.279330"], ["updated_at", "2017-10-26 14:01:02.279330"], ["week_id", 14]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 5], ["away_team_id", 7], ["created_at", "2017-10-26 14:01:02.281248"], ["updated_at", "2017-10-26 14:01:02.281248"], ["week_id", 14]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 29], ["away_team_id", 30], ["created_at", "2017-10-26 14:01:02.283294"], ["updated_at", "2017-10-26 14:01:02.283294"], ["week_id", 14]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 24], ["away_team_id", 21], ["created_at", "2017-10-26 14:01:02.285370"], ["updated_at", "2017-10-26 14:01:02.285370"], ["week_id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 15], ["created_at", "2017-10-26 14:01:02.287116"], ["updated_at", "2017-10-26 14:01:02.287116"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 20], ["away_team_id", 18], ["created_at", "2017-10-26 14:01:02.288977"], ["updated_at", "2017-10-26 14:01:02.288977"], ["week_id", 15]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 25], ["away_team_id", 17], ["created_at", "2017-10-26 14:01:02.290940"], ["updated_at", "2017-10-26 14:01:02.290940"], ["week_id", 15]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 11], ["away_team_id", 12], ["created_at", "2017-10-26 14:01:02.293040"], ["updated_at", "2017-10-26 14:01:02.293040"], ["week_id", 15]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 23], ["away_team_id", 24], ["created_at", "2017-10-26 14:01:02.294996"], ["updated_at", "2017-10-26 14:01:02.294996"], ["week_id", 15]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 31], ["away_team_id", 30], ["created_at", "2017-10-26 14:01:02.297031"], ["updated_at", "2017-10-26 14:01:02.297031"], ["week_id", 15]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 10], ["away_team_id", 32], ["created_at", "2017-10-26 14:01:02.299032"], ["updated_at", "2017-10-26 14:01:02.299032"], ["week_id", 15]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 3], ["away_team_id", 22], ["created_at", "2017-10-26 14:01:02.300767"], ["updated_at", "2017-10-26 14:01:02.300767"], ["week_id", 15]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 5], ["away_team_id", 6], ["created_at", "2017-10-26 14:01:02.302732"], ["updated_at", "2017-10-26 14:01:02.302732"], ["week_id", 15]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 8], ["away_team_id", 15], ["created_at", "2017-10-26 14:01:02.304982"], ["updated_at", "2017-10-26 14:01:02.304982"], ["week_id", 15]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 2], ["away_team_id", 9], ["created_at", "2017-10-26 14:01:02.308823"], ["updated_at", "2017-10-26 14:01:02.308823"], ["week_id", 15]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 28], ["away_team_id", 27], ["created_at", "2017-10-26 14:01:02.310846"], ["updated_at", "2017-10-26 14:01:02.310846"], ["week_id", 15]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 13], ["away_team_id", 16], ["created_at", "2017-10-26 14:01:02.313004"], ["updated_at", "2017-10-26 14:01:02.313004"], ["week_id", 15]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 29], ["away_team_id", 21], ["created_at", "2017-10-26 14:01:02.314946"], ["updated_at", "2017-10-26 14:01:02.314946"], ["week_id", 15]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 14], ["away_team_id", 26], ["created_at", "2017-10-26 14:01:02.316685"], ["updated_at", "2017-10-26 14:01:02.316685"], ["week_id", 15]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 19], ["away_team_id", 7], ["created_at", "2017-10-26 14:01:02.319404"], ["updated_at", "2017-10-26 14:01:02.319404"], ["week_id", 15]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 4], ["away_team_id", 1], ["created_at", "2017-10-26 14:01:02.321593"], ["updated_at", "2017-10-26 14:01:02.321593"], ["week_id", 15]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 16], ["created_at", "2017-10-26 14:01:02.323538"], ["updated_at", "2017-10-26 14:01:02.323538"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 30], ["away_team_id", 25], ["created_at", "2017-10-26 14:01:02.325830"], ["updated_at", "2017-10-26 14:01:02.325830"], ["week_id", 16]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 9], ["away_team_id", 10], ["created_at", "2017-10-26 14:01:02.328048"], ["updated_at", "2017-10-26 14:01:02.328048"], ["week_id", 16]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 12], ["away_team_id", 31], ["created_at", "2017-10-26 14:01:02.330007"], ["updated_at", "2017-10-26 14:01:02.330007"], ["week_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 32], ["away_team_id", 11], ["created_at", "2017-10-26 14:01:02.331627"], ["updated_at", "2017-10-26 14:01:02.331627"], ["week_id", 16]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 26], ["away_team_id", 16], ["created_at", "2017-10-26 14:01:02.333569"], ["updated_at", "2017-10-26 14:01:02.333569"], ["week_id", 16]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 20], ["away_team_id", 24], ["created_at", "2017-10-26 14:01:02.335467"], ["updated_at", "2017-10-26 14:01:02.335467"], ["week_id", 16]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 21], ["away_team_id", 23], ["created_at", "2017-10-26 14:01:02.337440"], ["updated_at", "2017-10-26 14:01:02.337440"], ["week_id", 16]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 3], ["away_team_id", 1], ["created_at", "2017-10-26 14:01:02.339496"], ["updated_at", "2017-10-26 14:01:02.339496"], ["week_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 22], ["away_team_id", 18], ["created_at", "2017-10-26 14:01:02.341425"], ["updated_at", "2017-10-26 14:01:02.341425"], ["week_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 8], ["away_team_id", 17], ["created_at", "2017-10-26 14:01:02.343126"], ["updated_at", "2017-10-26 14:01:02.343126"], ["week_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 2], ["away_team_id", 4], ["created_at", "2017-10-26 14:01:02.344829"], ["updated_at", "2017-10-26 14:01:02.344829"], ["week_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 14], ["away_team_id", 28], ["created_at", "2017-10-26 14:01:02.346493"], ["updated_at", "2017-10-26 14:01:02.346493"], ["week_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 7], ["away_team_id", 13], ["created_at", "2017-10-26 14:01:02.348223"], ["updated_at", "2017-10-26 14:01:02.348223"], ["week_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 15], ["away_team_id", 5], ["created_at", "2017-10-26 14:01:02.349873"], ["updated_at", "2017-10-26 14:01:02.349873"], ["week_id", 16]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 27], ["away_team_id", 29], ["created_at", "2017-10-26 14:01:02.351937"], ["updated_at", "2017-10-26 14:01:02.351937"], ["week_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 6], ["away_team_id", 19], ["created_at", "2017-10-26 14:01:02.353853"], ["updated_at", "2017-10-26 14:01:02.353853"], ["week_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "weeks" ("week_number", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["week_number", 17], ["created_at", "2017-10-26 14:01:02.355529"], ["updated_at", "2017-10-26 14:01:02.355529"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 1], ["away_team_id", 2], ["created_at", "2017-10-26 14:01:02.357575"], ["updated_at", "2017-10-26 14:01:02.357575"], ["week_id", 17]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 11], ["away_team_id", 9], ["created_at", "2017-10-26 14:01:02.359679"], ["updated_at", "2017-10-26 14:01:02.359679"], ["week_id", 17]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 26], ["away_team_id", 28], ["created_at", "2017-10-26 14:01:02.361661"], ["updated_at", "2017-10-26 14:01:02.361661"], ["week_id", 17]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 25], ["away_team_id", 27], ["created_at", "2017-10-26 14:01:02.363819"], ["updated_at", "2017-10-26 14:01:02.363819"], ["week_id", 17]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 24], ["away_team_id", 23], ["created_at", "2017-10-26 14:01:02.366095"], ["updated_at", "2017-10-26 14:01:02.366095"], ["week_id", 17]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 10], ["away_team_id", 12], ["created_at", "2017-10-26 14:01:02.368314"], ["updated_at", "2017-10-26 14:01:02.368314"], ["week_id", 17]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 21], ["away_team_id", 22], ["created_at", "2017-10-26 14:01:02.370496"], ["updated_at", "2017-10-26 14:01:02.370496"], ["week_id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 5], ["away_team_id", 8], ["created_at", "2017-10-26 14:01:02.372322"], ["updated_at", "2017-10-26 14:01:02.372322"], ["week_id", 17]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 6], ["away_team_id", 7], ["created_at", "2017-10-26 14:01:02.374382"], ["updated_at", "2017-10-26 14:01:02.374382"], ["week_id", 17]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 29], ["away_team_id", 31], ["created_at", "2017-10-26 14:01:02.376254"], ["updated_at", "2017-10-26 14:01:02.376254"], ["week_id", 17]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 4], ["away_team_id", 3], ["created_at", "2017-10-26 14:01:02.378162"], ["updated_at", "2017-10-26 14:01:02.378162"], ["week_id", 17]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 30], ["away_team_id", 32], ["created_at", "2017-10-26 14:01:02.380215"], ["updated_at", "2017-10-26 14:01:02.380215"], ["week_id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 17], ["away_team_id", 20], ["created_at", "2017-10-26 14:01:02.381924"], ["updated_at", "2017-10-26 14:01:02.381924"], ["week_id", 17]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 16], ["away_team_id", 14], ["created_at", "2017-10-26 14:01:02.383885"], ["updated_at", "2017-10-26 14:01:02.383885"], ["week_id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 18], ["away_team_id", 19], ["created_at", "2017-10-26 14:01:02.385651"], ["updated_at", "2017-10-26 14:01:02.385651"], ["week_id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "games" ("home_team_id", "away_team_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["home_team_id", 13], ["away_team_id", 15], ["created_at", "2017-10-26 14:01:02.387464"], ["updated_at", "2017-10-26 14:01:02.387464"], ["week_id", 17]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/api/v1/users/1/picks/" for 127.0.0.1 at 2017-10-26 10:01:40 -0400
+Started GET "/api/v1/weeks/8" for 127.0.0.1 at 2017-10-26 10:01:40 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::WeeksController#show as */*
+Processing by Api::V1::PicksController#index as */*
+  Parameters: {"id"=>"8"}
+  Parameters: {"user_id"=>"1"}
+  [1m[36mPick Load (1.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks"[0m
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (0.98ms)
+Completed 200 OK in 35ms (Views: 15.4ms | ActiveRecord: 5.5ms)
+
+
+[active_model_serializers]   [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers]   [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."week_id" = $1[0m  [["week_id", 8]]
+[active_model_serializers] Rendered WeekSerializer with ActiveModelSerializers::Adapter::JsonApi (74.78ms)
+Completed 200 OK in 117ms (Views: 72.5ms | ActiveRecord: 21.9ms)
+
+
+Started POST "/api/v1/users/1/picks/" for 127.0.0.1 at 2017-10-26 10:02:16 -0400
+Processing by Api::V1::PicksController#create as */*
+  Parameters: {"_json"=>[{"gameId"=>20, "guessId"=>17, "weekNumber"=>8, "userId"=>1}, {"gameId"=>19, "guessId"=>29, "weekNumber"=>8, "userId"=>1}, {"gameId"=>18, "guessId"=>7, "weekNumber"=>8, "userId"=>1}, {"gameId"=>17, "guessId"=>27, "weekNumber"=>8, "userId"=>1}, {"gameId"=>16, "guessId"=>2, "weekNumber"=>8, "userId"=>1}, {"gameId"=>15, "guessId"=>14, "weekNumber"=>8, "userId"=>1}, {"gameId"=>14, "guessId"=>12, "weekNumber"=>8, "userId"=>1}, {"gameId"=>13, "guessId"=>25, "weekNumber"=>8, "userId"=>1}, {"gameId"=>12, "guessId"=>19, "weekNumber"=>8, "userId"=>1}, {"gameId"=>11, "guessId"=>1, "weekNumber"=>8, "userId"=>1}, {"gameId"=>10, "guessId"=>10, "weekNumber"=>8, "userId"=>1}, {"gameId"=>9, "guessId"=>24, "weekNumber"=>8, "userId"=>1}, {"gameId"=>8, "guessId"=>18, "weekNumber"=>8, "userId"=>1}], "user_id"=>"1", "pick"=>{}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 20], ["user_id", 1], ["guess_id", 17], ["created_at", "2017-10-26 14:02:16.433824"], ["updated_at", "2017-10-26 14:02:16.433824"], ["week_id", 8]]
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 19], ["user_id", 1], ["guess_id", 29], ["created_at", "2017-10-26 14:02:16.442626"], ["updated_at", "2017-10-26 14:02:16.442626"], ["week_id", 8]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 18], ["user_id", 1], ["guess_id", 7], ["created_at", "2017-10-26 14:02:16.449142"], ["updated_at", "2017-10-26 14:02:16.449142"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 17], ["user_id", 1], ["guess_id", 27], ["created_at", "2017-10-26 14:02:16.454079"], ["updated_at", "2017-10-26 14:02:16.454079"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.3ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 16], ["user_id", 1], ["guess_id", 2], ["created_at", "2017-10-26 14:02:16.458523"], ["updated_at", "2017-10-26 14:02:16.458523"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 15], ["user_id", 1], ["guess_id", 14], ["created_at", "2017-10-26 14:02:16.463470"], ["updated_at", "2017-10-26 14:02:16.463470"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 14], ["user_id", 1], ["guess_id", 12], ["created_at", "2017-10-26 14:02:16.468037"], ["updated_at", "2017-10-26 14:02:16.468037"], ["week_id", 8]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 13], ["user_id", 1], ["guess_id", 25], ["created_at", "2017-10-26 14:02:16.472676"], ["updated_at", "2017-10-26 14:02:16.472676"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 12], ["user_id", 1], ["guess_id", 19], ["created_at", "2017-10-26 14:02:16.478227"], ["updated_at", "2017-10-26 14:02:16.478227"], ["week_id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 11], ["user_id", 1], ["guess_id", 1], ["created_at", "2017-10-26 14:02:16.485206"], ["updated_at", "2017-10-26 14:02:16.485206"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 10], ["user_id", 1], ["guess_id", 10], ["created_at", "2017-10-26 14:02:16.489995"], ["updated_at", "2017-10-26 14:02:16.489995"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.6ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.2ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 9], ["user_id", 1], ["guess_id", 24], ["created_at", "2017-10-26 14:02:16.497395"], ["updated_at", "2017-10-26 14:02:16.497395"], ["week_id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGame Load (0.1ms)[0m  [1m[34mSELECT  "games".* FROM "games" WHERE "games"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "picks" ("game_id", "user_id", "guess_id", "created_at", "updated_at", "week_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["game_id", 8], ["user_id", 1], ["guess_id", 18], ["created_at", "2017-10-26 14:02:16.501477"], ["updated_at", "2017-10-26 14:02:16.501477"], ["week_id", 8]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (4.6ms)
+Completed 200 OK in 106ms (Views: 7.6ms | ActiveRecord: 38.4ms)
+
+
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[36mGame Load (0.4ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 8]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 14:02:42.919194"], ["id", 13]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[36mPick Load (0.8ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 9]]
+  [1m[36mTeam Load (0.6ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 14:02:44.572002"], ["id", 11]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 11]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 12]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.5ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 14:02:45.821093"], ["id", 9]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[36mPick Load (0.8ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 13]]
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 14]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 14:02:47.137058"], ["id", 7]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 15]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 16]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 14:02:48.480806"], ["id", 5]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 17]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.4ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mPick Load (0.5ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 18]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.4ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 14:02:52.902331"], ["id", 3]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 19]]
+  [1m[36mTeam Load (0.5ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mPick Load (0.7ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 20]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.3ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "t"], ["updated_at", "2017-10-26 14:02:55.329329"], ["id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[36mWeek Load (0.8ms)[0m  [1m[34mSELECT "weeks".* FROM "weeks"[0m
+  [1m[36mGame Load (0.7ms)[0m  [1m[34mSELECT "games".* FROM "games" WHERE "games"."week_id" = $1[0m  [["week_id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 21], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 8]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "f"], ["updated_at", "2017-10-26 14:03:35.591521"], ["id", 13]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.3ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 30], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 24], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 9]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 31], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 10]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "f"], ["updated_at", "2017-10-26 14:03:35.611832"], ["id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 22], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 11]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 23], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 12]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "f"], ["updated_at", "2017-10-26 14:03:35.632019"], ["id", 9]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 32], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 25], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 13]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 14]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.1ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "f"], ["updated_at", "2017-10-26 14:03:35.648782"], ["id", 7]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 15]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 16]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "f"], ["updated_at", "2017-10-26 14:03:35.670767"], ["id", 5]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 13], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 27], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 17]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.1ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 18]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "f"], ["updated_at", "2017-10-26 14:03:35.689249"], ["id", 3]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 29], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 19]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 20], ["LIMIT", 1]]
+  [1m[36mTeam Load (0.2ms)[0m  [1m[34mSELECT  "teams".* FROM "teams" WHERE "teams"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mPick Load (0.2ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."game_id" = $1[0m  [["game_id", 20]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mWeek Load (0.2ms)[0m  [1m[34mSELECT  "weeks".* FROM "weeks" WHERE "weeks"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "picks" SET "was_right" = $1, "updated_at" = $2 WHERE "picks"."id" = $3[0m  [["was_right", "f"], ["updated_at", "2017-10-26 14:03:35.705492"], ["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-10-26 10:04:53 -0400
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers]   [1m[36mPick Load (0.4ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (40.5ms)
+Completed 200 OK in 81ms (Views: 65.1ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/api/v1/users" for 127.0.0.1 at 2017-10-26 10:05:07 -0400
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.3ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 2]]
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (11.65ms)
+Completed 200 OK in 20ms (Views: 16.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/usersby/Al" for 127.0.0.1 at 2017-10-26 10:06:02 -0400
+Processing by Api::V1::UsersController#user_by_name as HTML
+  Parameters: {"name"=>"Al"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE (lower(name) = 'al') ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[active_model_serializers]   [1m[36mPick Load (0.6ms)[0m  [1m[34mSELECT "picks".* FROM "picks" WHERE "picks"."user_id" = $1[0m  [["user_id", 1]]
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (2.77ms)
+Completed 200 OK in 7ms (Views: 2.6ms | ActiveRecord: 1.9ms)
+
+

@@ -14,24 +14,36 @@ class Game < ApplicationRecord
 
       away_team = Team.all.find_by(id: game.away_team_id)
 
-      puts "Who won 1.#{home_team.name} v. 2.#{away_team.name}"
+      puts "Who won 1.#{away_team.name} @ 2.#{home_team.name}"
 
       results = gets.chomp
 
-      if results.to_i == 1
+      if results.to_i == 2
         game.winning_team_id = game.home_team_id
-      elsif results.to_i == 2
+      elsif results.to_i == 1
         game.winning_team_id = game.away_team_id
       end
 
       game.picks.each do |pick|
         if pick.guess_id == game.winning_team_id
           pick.update(was_right: true)
-          user = User.all.find_by(id: pick.user_id)
-          user.update(wins: user.wins += 1)
         end
       end
 
+    end
+  end
+
+
+  def self.reset_week
+    puts 'Please select which week needs to be reset'
+    week_number = gets.chomp
+    week = Week.get_week_by_week_number(week_number.to_i)
+    week.games.each do |game|
+      game.winning_team_id = 0
+      game.save
+      game.picks.each do |pick|
+        pick.update(was_right: false)
+      end
     end
   end
 

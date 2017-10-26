@@ -15,4 +15,10 @@ class User < ApplicationRecord
     end
   end
 
+  def wins
+    self.picks.select do |pick|
+      pick.was_right
+    end.size
+  end
+
 end

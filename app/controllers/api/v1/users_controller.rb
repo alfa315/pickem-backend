@@ -9,7 +9,7 @@ module Api
      end
 
      def create
-       @user = User.create(name: params[:_json], wins: 0, total_picks: 0)
+       @user = User.create(name: params[:_json])
        render json: @user
      end
 
@@ -43,7 +43,7 @@ module Api
 
      private
      def user_params
-       params.permit(:name, :wins, :losses)
+       params.permit(:name)
      end
 
     end
