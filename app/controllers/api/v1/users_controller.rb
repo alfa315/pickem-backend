@@ -41,6 +41,15 @@ module Api
        render json: @user
      end
 
+     def users_by_wins
+       @users = User.all.sort_by do |user|
+         user.wins
+       end.reverse.map do |user|
+         {name: user.name, wins: user.wins}
+       end
+       render json: @users
+      end
+
      private
      def user_params
        params.permit(:name)

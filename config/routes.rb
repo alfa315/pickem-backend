@@ -13,5 +13,7 @@ Rails.application.routes.draw do
 
   get '/api/v1/weeks/:id/users/:user_id', to: 'api/v1/weeks#show_picks'
 
+  get '/api/v1/usersby/wins', to: 'api/v1/users#users_by_wins'
+
   get '/api/v1/usersby/:name', to: 'api/v1/users#user_by_name'
 end
