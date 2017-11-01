@@ -5,6 +5,11 @@ class Api::V1::TeamsController < ApplicationController
    render json: @teams
   end
 
+  def show
+    @team = Team.find(params[:id])
+    render json: @team
+  end
+
  def update
    @team = Team.find(params[:id])
 

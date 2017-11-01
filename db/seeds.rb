@@ -95,8 +95,7 @@ w1.new_game(chargers, broncos)
 
 w2 = Week.create(week_number: 2)
 
-game = w2.new_game(packers, falcons)
-game.update(winning_team_id: falcons.id)
+w2.new_game(packers, falcons)
 w2.new_game(texans, browns)
 w2.new_game(browns, ravens)
 w2.new_game(bills, panthers)
