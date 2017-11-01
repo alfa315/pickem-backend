@@ -3,7 +3,8 @@ class Week < ApplicationRecord
   has_many :picks
 
   def new_game(away_team, home_team)
-    Game.create(away_team: away_team, home_team: home_team, week: self)
+    self.games.create(away_team: away_team, home_team: home_team)
+    self.save
   end
 
   def self.get_week_by_week_number(number)

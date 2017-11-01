@@ -1,10 +1,9 @@
 class Game < ApplicationRecord
   belongs_to :home_team, class_name: "Team", :foreign_key => :home_team_id
   belongs_to :away_team, class_name: "Team", :foreign_key => :away_team_id
-  belongs_to :winning_team, class_name: "Team", :foreign_key => :winning_team_id
+  belongs_to :winning_team, class_name: "Team", :foreign_key => :winning_team_id, optional: true
   has_many :picks
   belongs_to :week
-  validates :winning_team, inclusion: {in: [0, :home_team, :away_team]}
 
   def set_winner(str = 'home')
     if str.downcase == 'home'
@@ -47,6 +46,39 @@ class Game < ApplicationRecord
         end
       end
 
+    end
+  end
+
+  def self.one_game
+    puts "Which week?"
+    week_number = gets.chomp
+    puts week_number
+    week = Week.get_week_by_week_number(week_number.to_i)
+    puts "which game?"
+    week.games.each.with_index do |game, idx|
+      puts "#{idx + 1} - #{game.away_team.name} @ #{game.home_team.name}"
+    end
+    game = gets.chomp
+    game = week.games[game.to_i - 1]
+    puts "who won the game?"
+    puts "1. #{game.away_team.name} @ 2. #{game.home_team.name}"
+    winner = gets.chomp
+    while winner != "1" && winner != "2"
+      puts "Pleas enter 1 or 2"
+      winner = gets.chomp
+    end
+
+    if winner.to_i == 2
+
+      game.update(winning_team_id: game.home_team_id)
+    else winner.to_i == 1
+      game.update(winning_team_id: game.away_team_id)
+    end
+
+    game.picks.each do |pick|
+      if pick.guess_id == game.winning_team_id
+        pick.update(was_right: true)
+      end
     end
   end
 
