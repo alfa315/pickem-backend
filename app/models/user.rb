@@ -21,4 +21,11 @@ class User < ApplicationRecord
     end.size
   end
 
+
+  def wins_by_week(week_num)
+    self.week_picks(week_num).select do |pick|
+      Game.find(pick.game_id).winning_team.try(:id) == pick.guess_id
+    end.length
+  end
+
 end

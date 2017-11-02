@@ -29,6 +29,11 @@ class Api::V1::WeeksController < ApplicationController
    render json: @pick
  end
 
+ def show_user_wins
+   @weeks = Week.user_wins_by_week
+   render json: @weeks
+ end
+
  private
  def week_params
    params.permit(:name)

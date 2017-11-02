@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/api/v1/weeks/userwins', to: 'api/v1/weeks#show_user_wins'
   namespace :api do
     namespace :v1 do
       resources :teams, only: [:index, :update, :create, :show]
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   get '/api/v1/users/:id/picks/week/:week_number', to: 'api/v1/users#show_week'
 
   get '/api/v1/weeks/:id/users/:user_id', to: 'api/v1/weeks#show_picks'
+
 
   get '/api/v1/usersby/wins', to: 'api/v1/users#users_by_wins'
 

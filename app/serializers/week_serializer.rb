@@ -3,8 +3,8 @@ class WeekSerializer < ActiveModel::Serializer
     object.games.map do |game|
       json = {}
       json['id'] = game.id
-      json['home_team'] = {id: game.home_team.id, name: game.home_team.name, team_color: game.home_team.team_color}
-      json["away_team"] = {id: game.away_team.id, name: game.away_team.name, team_color: game.away_team.team_color}
+      json['home_team'] = {id: game.home_team.id, name: game.home_team.name, team_color: game.home_team.team_color, record: game.home_team.record}
+      json["away_team"] = {id: game.away_team.id, name: game.away_team.name, team_color: game.away_team.team_color, record: game.away_team.record}
 
       json['winning_team'] = game.winning_team.try(:id)
       json
