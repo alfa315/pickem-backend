@@ -1,24 +1,9 @@
-# README
+# Weekly Pick'em
+This Single page app was created in just over four days by Al Artesona & Will Scirpps
+We wanted an easy to use app for betting against friends, family, and co-workers about the NFL games each week.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+We would have liked to have used an external API for the spreads, scores, and other team info but they all cost money and we don't have any. All of the data is written in manually from the command line. Running the console and typing `Game.game_results` will enter you into a prompt to enter the winners/losers for each game each week. This is mainly to prevent any user from changing the data on their own.
 
-Things you may want to cover:
+The frontend uses JavaScript and jQuery. Plenty of conditional formatting to keep the user up-to-date with their picks and game results.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Link to the frontend repo](https://github.com/ChuckBTaylor/pickem-frontend)
