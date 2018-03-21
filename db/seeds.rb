@@ -223,7 +223,6 @@ w8.new_game(broncos, chiefs)
 
 w9 = Week.create(week_number: 9)
 
-w9.new_game(panthers, seahawks)
 w9.new_game(bills, jets)
 w9.new_game(ravens, titans)
 w9.new_game(bucs, saints)
